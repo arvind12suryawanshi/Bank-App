@@ -11,18 +11,29 @@ public class Main {
         double balance = sc.nextDouble();
         SBIusers user = new SBIusers(name,balance,password);
 
+        // creation account
+        SBIusers acc1 = new SBIusers(name,balance,password);
+        System.out.println("the new sbi account is"+acc1.getAcountNo());
+
         //add amount
-        String message = user.addMoney(100000);
-        System.out.println(message);
+        System.out.println("enter the money do you want to add");
+        int money1 = sc.nextInt();
+        acc1.addMoney(money1);
+
+        // check balance
+        double newBalance = acc1.getBalance();
+        System.out.println("the new balance is "+newBalance);
 
         //  withdraw money
-        System.out.println("enter the money you want to withdraw");
-        int money = sc.nextInt();
+        System.out.println(" withdraw money");
+        int amt = sc.nextInt();
         System.out.println("enter the password");
-        String pass = sc.next();
-        System.out.println(user.withdrawMoney(money,pass));
+        String enterPassword = sc.next();
+        String result = acc1.withdrawMoney(amt,enterPassword);
+        System.out.println(result);
+
 
         //rate of interest
-        System.out.println(user.calculateInterest(10));
+        System.out.println("the interest of 10 years on"+acc1.getBalance()+"RS will be: "+acc1.calculateInterest(10));
     }
 }
